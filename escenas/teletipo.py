@@ -85,9 +85,8 @@ def teletipo(lineas, vel=0.04):
                 if ev.key == pygame.K_ESCAPE:
                     return
 
-    # Pausa breve
-    t_fin = time.time()
-    while time.time() - t_fin < 1.0:
+    # Espera a que presione una tecla
+    while True:
         fondo_terminal()
         tick_particles()
         lluvia_data(1)
@@ -114,7 +113,7 @@ def briefing_mision(num, titulo, lineas, col, tlim):
     from ui import fondo_terminal
 
     t0 = time.time()
-    dur = 3.0
+    dur = 7.0
 
     while time.time() - t0 < dur:
         tt = (time.time() - t0) / dur

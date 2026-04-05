@@ -260,7 +260,7 @@ def mision_hash():
     msg_ret = ""
     col_msg = BLANCO
     resuelto = False
-    TMAX = 60.0
+    TMAX = 70.0
     t_ini = time.time()
     t_mision = 0.0
     pista_usada = False

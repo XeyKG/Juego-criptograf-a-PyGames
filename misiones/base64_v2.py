@@ -132,7 +132,7 @@ def mision_base64():
     msg_ret = ""
     col_msg = BLANCO
     resuelto = False
-    TMAX = 50.0
+    TMAX = 60.0
     t_ini = time.time()
     t_mision = 0.0
     

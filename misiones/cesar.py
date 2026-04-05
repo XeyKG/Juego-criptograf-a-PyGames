@@ -118,7 +118,7 @@ def mision_cesar():
     msg_ret = ""
     col_msg = BLANCO
     resuelto = False
-    TMAX = 55.0
+    TMAX = 65.0
     t_ini = time.time()
     pista_usada = False
     t_mision = 0.0
