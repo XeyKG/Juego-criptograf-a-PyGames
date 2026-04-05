@@ -25,9 +25,9 @@ from escenas.inicio import pantalla_inicio
 from escenas.teletipo import teletipo
 from escenas.resultados import pantalla_resultados
 from misiones.cesar import mision_cesar
-from misiones.base64 import mision_base64
+from misiones.base64_v2 import mision_base64
 from misiones.hash import mision_hash
-from misiones.diffie import mision_diffie      # ← corregido aquí
+from misiones.diffie import mision_diffie
 
 
 def main():

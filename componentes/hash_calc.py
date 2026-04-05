@@ -8,7 +8,7 @@ import time
 import math
 import pygame
 
-from config import ANCHO, FOSF_VERDE, AMBER, ROJO_DIM
+from config import ANCHO, FOSF_VERDE, AMBER, ROJO_DIM, FOSF_DIM
 from criptografia import sha256
 from ui import txt, panel, F_TINY, F_BOLD, F_SMALL
 
@@ -60,10 +60,11 @@ class HashCalc:
 
         # Input visual
         ir = pygame.Rect(self.x + 8, self.y + 22, self.w - 16, 30)
-        s = pygame.Surface((ir.w, ir.h), pygame.SRCALPHA)
-        pygame.draw.rect(s, (0, 25, 8, 220), (0, 0, ir.w, ir.h),
-                         border_radius=3)
-        pantalla.blit(s, ir.topleft)
+        if ir.w > 0 and ir.h > 0:
+            s = pygame.Surface((ir.w, ir.h), pygame.SRCALPHA)
+            pygame.draw.rect(s, (0, 25, 8, 220), (0, 0, ir.w, ir.h),
+                             border_radius=3)
+            pantalla.blit(s, ir.topleft)
         cur = "|" if self.activo and int(time.time() * 2) % 2 == 0 else ""
         txt(self.texto + cur, F_BOLD, FOSF_VERDE, ir.x + 6, ir.y + 6)
         bord = FOSF_VERDE if self.activo else FOSF_DIM
@@ -81,11 +82,12 @@ class HashCalc:
         if self.match:
             txt("✓ ¡COINCIDENCIA DETECTADA!", F_SMALL, FOSF_VERDE,
                 self.x + self.w // 2, self.y + self.h - 18, centro=True)
-            s = pygame.Surface((self.w, self.h), pygame.SRCALPHA)
-            a = int(30 * abs(math.sin(time.time() * 4)))
-            pygame.draw.rect(s, (*FOSF_VERDE, a), (0, 0, self.w, self.h),
-                             border_radius=6)
-            pantalla.blit(s, (self.x, self.y))
+            if self.w > 0 and self.h > 0:
+                s = pygame.Surface((self.w, self.h), pygame.SRCALPHA)
+                a = int(30 * abs(math.sin(time.time() * 4)))
+                pygame.draw.rect(s, (*FOSF_VERDE, a), (0, 0, self.w, self.h),
+                                 border_radius=6)
+                pantalla.blit(s, (self.x, self.y))
 
         # Hash objetivo de referencia
         if target_hash:

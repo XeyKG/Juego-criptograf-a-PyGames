@@ -272,6 +272,7 @@ def mision_base64():
             panel(20, ALTO - 110, ANCHO - 40, 35, col=bg, borde=col_msg, radio=4)
             txt(msg_ret, F_BOLD, col_msg, ANCHO // 2, ALTO - 93, centro=True)
 
+        btn_sig = None
         if resuelto:
             btn_sig = boton("SIGUIENTE MISIÓN ▶▶",
                            ANCHO // 2 - 110, ALTO - 55, 220, 38,
@@ -392,5 +393,5 @@ def mision_base64():
                         else:
                             aria.decir("Reintenta. Las pistas son tuya aliada.", ROJO_ALERTA)
                 
-                if btn_sig.collidepoint(mouse) and resuelto:
+                if btn_sig and btn_sig.collidepoint(mouse) and resuelto:
                     return True, t_mision, True

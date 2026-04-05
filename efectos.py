@@ -58,7 +58,7 @@ class ScreenFX:
 
         if self.flash_dur > 0:
             self.flash_dur -= dt
-            self.flash_alpha = max(0, int(180 * (self.flash_dur / 0.2)))
+            self.flash_alpha = max(0, min(255, int(180 * (self.flash_dur / 0.2))))
         else:
             self.flash_alpha = 0
 

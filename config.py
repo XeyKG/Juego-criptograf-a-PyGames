@@ -19,7 +19,7 @@ except Exception:
     AUDIO_OK = False
 
 # ─── PANTALLA ─────────────────────────────────────────────────────────────────
-ANCHO, ALTO = 1024, 720
+ANCHO, ALTO = 1280, 800
 pantalla = pygame.display.set_mode((ANCHO, ALTO))
 pygame.display.set_caption("OPERACIÓN SOMBRA v3.0 — Agencia de Inteligencia Cifrada")
 reloj = pygame.time.Clock()
