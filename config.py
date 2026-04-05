@@ -18,6 +18,9 @@ try:
 except Exception:
     AUDIO_OK = False
 
+# ─── MODO DE JUEGO ────────────────────────────────────────────────────────────
+MODO_PRACTICA = False  # True = sin límite de tiempo; False = con límite (clasificado)
+
 # ─── PANTALLA ─────────────────────────────────────────────────────────────────
 ANCHO, ALTO = 1280, 800
 pantalla = pygame.display.set_mode((ANCHO, ALTO))

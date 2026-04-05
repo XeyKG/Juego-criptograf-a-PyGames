@@ -17,6 +17,7 @@ from ui import fondo_terminal, txt, txt_glow, panel, boton
 from efectos import tick_particles, lluvia_data
 from sonidos import play
 from escenas.expedientes import pantalla_expedientes
+from escenas.cargapartida import pantalla_carga_partida
 
 
 def pantalla_inicio(rec):
@@ -128,14 +129,17 @@ def pantalla_inicio(rec):
 
         # Botones
         by = py + ph - 58
-        btn_op = boton("▶ INICIAR OPERACIÓN",
-                       px + 80, by, 260, 42,
+        btn_op = boton("▶ NUEVA OPERACIÓN",
+                       px + 40, by, 200, 42,
                        (0, 60, 20), (0, 120, 40), mouse)
+        btn_carg = boton("⟲ CARGAR",
+                        px + 255, by, 140, 42,
+                        (20, 40, 20), (40, 80, 40), mouse)
         btn_rec = boton("◈ EXPEDIENTES",
-                       px + 360, by, 160, 42,
+                       px + 410, by, 160, 42,
                        (40, 40, 0), (80, 80, 0), mouse)
         btn_sal = boton("✖ ABORTAR",
-                       px + 540, by, 120, 42,
+                       px + 585, by, 120, 42,
                        (40, 0, 0), (100, 0, 0), mouse)
 
         txt("v3.0  //  INTERFAZ MEJORADA  //  MECÁNICAS INTERACTIVAS",
@@ -151,6 +155,11 @@ def pantalla_inicio(rec):
                 if btn_op.collidepoint(ev.pos):
                     play("mision")
                     return "jugar"
+                if btn_carg.collidepoint(ev.pos):
+                    play("beep")
+                    partida_data, _ = pantalla_carga_partida()
+                    if partida_data:
+                        return ("cargar", partida_data)
                 if btn_rec.collidepoint(ev.pos):
                     play("beep")
                     pantalla_expedientes(rec)

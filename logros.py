@@ -17,16 +17,35 @@ from sonidos import play
 
 
 LOGROS_DEF = {
+    # Logros generales
     "PRIMERA_SANGRE": ("Primera Sangre",    "Completa tu primera misión",    FOSF_VERDE,  "★"),
     "SIN_PISTA":      ("Pura Intuición",     "Resuelve sin usar pistas",     AMBER,       "◈"),
     "RACHA_3":        ("En Racha",           "3 aciertos consecutivos",      CYAN_SCAN,   "◆"),
     "RACHA_5":        ("Imparable",          "5 aciertos consecutivos",      ORO,         "◆◆"),
     "VELOCISTA":      ("Velocista",          "Resuelve en <10 segundos",     AZUL_DATA,   "⚡"),
     "PERFECTO":       ("Operación Limpia",   "Todas las misiones sin error", MORADO,      "✦"),
+    
+    # Logros por misión
     "CIFRADOR":       ("Cifrador Nativo",    "Domina el César",              FOSF_VERDE,  "⟁"),
     "DECODIFICADOR":  ("Decodificador",      "Domina Base64",                CYAN_SCAN,   "⟁"),
     "HUELLA":         ("Rastreador",         "Domina SHA-256",               AMBER,       "⟁"),
     "PROTOCOLO":      ("Maestro del DH",     "Domina Diffie-Hellman",        ROJO_ALERTA, "⟁"),
+    
+    # Logros de velocidad
+    "CESAR_RAPIDO":   ("Cesar Velocista",    "César en <15s",               FOSF_VERDE,  "⚡"),
+    "BASE64_RAPIDO":  ("Decodificador Rápido", "Base64 en <12s",           CYAN_SCAN,   "⚡"),
+    "HASH_RAPIDO":    ("Hasheador Rápido",   "SHA-256 en <20s",             AMBER,       "⚡"),
+    "DH_RAPIDO":      ("DH Velocista",       "Diffie-Hellman en <30s",      ROJO_ALERTA, "⚡"),
+    
+    # Logros de precisión
+    "CESAR_PERFECTO": ("Cifrador Perfecto",  "César sin fallos",            FOSF_VERDE,  "✦"),
+    "BASE64_PERFECTO":("Decoder Perfecto",   "Base64 sin fallos",           CYAN_SCAN,   "✦"),
+    "HASH_PERFECTO":  ("Hash Perfecto",      "SHA-256 sin fallos",          AMBER,       "✦"),
+    "DH_PERFECTO":    ("Protocolo Perfecto", "DH sin fallos",               ROJO_ALERTA, "✦"),
+    
+    # Logros especiales
+    "TODA_LIMPIA":    ("Operación Total",    "Completa todo sin errores",   ORO,         "◆◆◆"),
+    "EXPERTO":        ("Experto en Cripto",  "Todas las misiones <60s",     MORADO,      "★★★"),
 }
 
 
