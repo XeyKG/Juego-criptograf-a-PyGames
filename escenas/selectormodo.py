@@ -10,7 +10,7 @@ import time
 from config import (
     ANCHO, ALTO, reloj, pantalla, MODO_PRACTICA,
     FOSF_VERDE, FOSF_DIM, AMBER, ROJO_ALERTA, MORADO,
-    BLANCO, GRIS_PANEL, F_GIANT, F_BOLD, F_SMALL, F_TINY,
+    BLANCO, GRIS_PANEL, F_GIANT, F_BOLD, F_SMALL, F_TINY, F_MICRO,
 )
 from ui import fondo_terminal, txt, txt_glow, panel, boton
 from efectos import tick_particles, lluvia_data
@@ -77,12 +77,12 @@ def pantalla_seleccionar_modo():
         y_info = py1 + 60
         for linea in info_mision:
             col = AMBER if linea.startswith("•") else FOSF_DIM
-            txt(linea, F_TINY, col, px1 + 20, y_info)
+            txt(linea, F_MICRO, col, px1 + 20, y_info)
             y_info += 22
         
         # Botón Misión Clasificada
-        btn_mision = boton("INICIAR MISIÓN",
-                          px1 + 50, py1 + ph1 - 45, 250, 38,
+        btn_mision = boton("INICIAR",
+                          px1 + 50, py1 + ph1 - 70, 250, 38,
                           (80, 50, 0) if hov1 else (40, 30, 0),
                           (150, 80, 0), mouse)
         
@@ -113,12 +113,12 @@ def pantalla_seleccionar_modo():
         y_info = py2 + 60
         for linea in info_entrenamiento:
             col = MORADO if linea.startswith("•") else FOSF_DIM
-            txt(linea, F_TINY, col, px2 + 20, y_info)
+            txt(linea, F_MICRO, col, px2 + 20, y_info)
             y_info += 22
         
         # Botón Entrenamiento
-        btn_entrenamiento = boton("INICIAR ENTRENAMIENTO",
-                                 px2 + 30, py2 + ph2 - 45, 290, 38,
+        btn_entrenamiento = boton("INICIAR",
+                                 px2 + 30, py2 + ph2 - 70, 290, 38,
                                  (80, 0, 80) if hov2 else (40, 0, 40),
                                  (150, 0, 150), mouse)
         

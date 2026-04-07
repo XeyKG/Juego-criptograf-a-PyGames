@@ -6,7 +6,7 @@ Chat del operador ARIA — mensajes contextuales en la esquina inferior.
 import time
 
 from config import CYAN_SCAN, ANCHO, ALTO
-from ui import txt, panel, F_SMALL, F_TINY
+from ui import txt, panel, F_SMALL, F_TINY, F_MICRO
 
 
 class ChatBase:
@@ -35,7 +35,7 @@ class ChatBase:
         bx, by = 8, ALTO - 115
         bw = 310
         panel(bx, by, bw, 82, col=(0, 12, 22), borde=CYAN_SCAN, alpha=200)
-        txt("◈ ARIA [BASE]:", F_TINY, CYAN_SCAN, bx + 6, by + 4)
+        txt("◈ ARIA [BASE]:", F_MICRO, CYAN_SCAN, bx + 6, by + 4)
         # Último mensaje con word-wrap
         mensaje = self.mensajes[-1]
         palabras = mensaje[0].split()
@@ -51,7 +51,7 @@ class ChatBase:
         if linea:
             lineas.append(linea)
         for i, l in enumerate(lineas[:3]):
-            txt(l, F_TINY, mensaje[1], bx + 6, by + 18 + i * 18)
+            txt(l, F_MICRO, mensaje[1], bx + 6, by + 18 + i * 18)
 
 
 # Instancia global

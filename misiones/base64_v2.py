@@ -195,7 +195,7 @@ def mision_base64():
         # ── Sección 4: Mensaje Decodificado ──
         if decodificado:
             panel(col_x, 275, col_w, 200, col=GRIS_PANEL, borde=FOSF_VERDE, radio=4)
-            txt("◈ MENSAJE DECODIFICADO:", F_TINY, FOSF_VERDE, col_x + 8, 280)
+            txt("◈ MENSAJE DECODIFICADO:", F_MICRO, FOSF_VERDE, col_x + 8, 280)
             pygame.draw.line(pantalla, FOSF_VERDE, (col_x + 8, 298), (col_x + col_w - 8, 298), 1)
 
             # Word-wrap del mensaje
@@ -212,17 +212,17 @@ def mision_base64():
 
             y_msg = 305
             for linea in msg_lines[:5]:  # Máximo 5 líneas
-                txt(linea, F_TINY, BLANCO, col_x + 12, y_msg)
+                txt(linea, F_MICRO, BLANCO, col_x + 12, y_msg)
                 y_msg += 18
         else:
             panel(col_x, 275, col_w, 200, col=GRIS_PANEL, borde=FOSF_DIM, radio=4)
-            txt("◈ MENSAJE DECODIFICADO:", F_TINY, FOSF_DIM, col_x + 8, 280)
+            txt("◈ MENSAJE DECODIFICADO:", F_MICRO, FOSF_DIM, col_x + 8, 280)
             txt("(Presiona DECODIFICAR para revelar)", F_SMALL, FOSF_DIM, col_x + 12, 330, centro=False)
 
         # ── Sección 5: Pistas ──
         an_x = col_x + col_w + 20
         panel(an_x, 275, col_w, 200, col=GRIS_PANEL, borde=AMBER, radio=4)
-        txt("◈ PISTAS CLAVE:", F_TINY, AMBER, an_x + 8, 280)
+        txt("◈ PISTAS CLAVE:", F_MICRO, AMBER, an_x + 8, 280)
         pygame.draw.line(pantalla, AMBER, (an_x + 8, 298), (an_x + col_w - 8, 298), 1)
 
         y_pista = 310
@@ -243,7 +243,7 @@ def mision_base64():
                 pista_lines.append(pista_temp.strip())
 
             for j, linea in enumerate(pista_lines):
-                txt(linea, F_TINY, BLANCO, an_x + 30, y_pista + j * 16)
+                txt(linea, F_MICRO, BLANCO, an_x + 30, y_pista + j * 16)
             
             y_pista += len(pista_lines) * 16 + 8
 
@@ -256,7 +256,7 @@ def mision_base64():
             pantalla.blit(s_br, (col_x, 490))
         
         panel(col_x, 490, ANCHO - 360, 65, col=(5, 15, 5), borde=resp_borde, radio=4)
-        txt(f"◉ OPERACIÓN {'◀ ACTIVA' if resp_activo else ''}", F_TINY, 
+        txt(f"◉ OPERACIÓN {'◀ ACTIVA' if resp_activo else ''}", F_MICRO, 
             FOSF_VERDE if resp_activo else FOSF_DIM, col_x + 8, 495)
         
         input_box(texto_respuesta, col_x + 8, 515, ANCHO - 376, 
@@ -274,9 +274,9 @@ def mision_base64():
 
         btn_sig = None
         if resuelto:
-            btn_sig = boton("SIGUIENTE MISIÓN ▶▶",
-                           ANCHO // 2 - 110, ALTO - 55, 220, 38,
-                           (0, 60, 20), (0, 120, 40), mouse)
+            btn_sig = boton("SIGUIENTE MISIÓN ",
+                           ANCHO // 2 - 140, ALTO - 80, 280, 52,
+                            (0, 60, 20), (0, 120, 40), mouse)
 
         # ── Overlays ──
         aria.actualizar()

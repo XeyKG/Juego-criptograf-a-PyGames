@@ -1,3 +1,9 @@
+# -*- coding: utf-8 -*-
+"""
+Pantalla de informe final — v3.1 LEGIBILIDAD MEJORADA
+Cambios: fuentes más grandes, más espacio entre filas, contraste mejorado.
+"""
+
 import time
 import pygame
 

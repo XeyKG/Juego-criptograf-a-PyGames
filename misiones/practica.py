@@ -23,18 +23,23 @@ def _dibujar_encabezado(titulo, descripcion):
     txt(descripcion, F_SMALL, FOSF_DIM, ANCHO // 2, 95, centro=True)
     pygame.draw.line(pantalla, FOSF_DIM, (140, 120), (ANCHO - 140, 120), 1)
 
-
 def _dibujar_tarjeta(x, y, w, h, titulo, texto, color):
     panel(x, y, w, h, col=(12, 18, 24), borde=color, radio=14, alpha=230)
     txt_glow(titulo, F_SMALL, color, x + 20, y + 16)
-    txt(texto, F_MICRO, FOSF_DIM, x + 20, y + 44)
-
+    # Solo el bucle, sin la llamada original
+    lineas = texto.split("\n")
+    for i, linea in enumerate(lineas):
+        txt(linea.strip(), F_MICRO, FOSF_DIM, x + 20, y + 44 + i * 18)
 
 def _dibujar_explica(x, y, titulo, lineas, color):
-    panel(x, y, 300, 220, col=(8, 12, 20), borde=color, radio=12, alpha=220)
+    panel(x, y, 550, 220, col=(8, 12, 20), borde=color, radio=12, alpha=220)
     txt_glow(titulo, F_SMALL, color, x + 18, y + 14)
-    for i, linea in enumerate(lineas):
-        txt(linea, F_MICRO, FOSF_DIM, x + 18, y + 44 + i * 20)
+    
+    fila = 0  # contador global de líneas renderizadas
+    for linea in lineas:
+        for sublinea in linea.split("\n"):
+            txt(sublinea.strip(), F_MICRO, FOSF_DIM, x + 18, y + 44 + fila * 20)
+            fila += 1
 
 
 def _esperar_click_fin():
@@ -63,10 +68,17 @@ def _mostrar_panel_inicial():
         txt("Estas lecciones explican de forma académica cada técnica.", F_SMALL, FOSF_DIM, ANCHO // 2, 240, centro=True)
         txt("Lee la teoría, prueba los ejemplos y avanza cuando estés listo.", F_MICRO, FOSF_DIM, ANCHO // 2, 268, centro=True)
 
-        _dibujar_tarjeta(160, 330, 240, 180, "1. César", "Rotación de letras. Comprende cómo funciona el shift.", FOSF_VERDE)
-        _dibujar_tarjeta(460, 330, 240, 180, "2. Base64", "Codificación reversible de bytes a texto.", CYAN_SCAN)
-        _dibujar_tarjeta(760, 330, 240, 180, "3. Hash", "Huella única e irreversible de datos.", AMBER)
-        _dibujar_tarjeta(1060, 330, 240, 180, "4. Diffie", "Intercambio seguro de claves sobre un canal abierto.", ROJO_ALERTA)
+        _dibujar_tarjeta(160, 330, 240, 180, "1. César",
+            "Rotación de letras.\nComprende cómo\nfunciona el shift.", FOSF_VERDE)
+
+        _dibujar_tarjeta(460, 330, 240, 180, "2.  Base64",
+            "Codificación\nreversible de bytes\n a texto.", CYAN_SCAN)
+
+        _dibujar_tarjeta(760, 330, 240, 180, "3. Hash",
+            "Huella única e\nirreversible de datos.", AMBER)
+
+        _dibujar_tarjeta(1060, 330, 240, 180, "4. Diffie",
+            "Intercambio\nseguro de\nclaves sobre\nun canal abierto.", ROJO_ALERTA)
 
         txt("Pulsa ENTER para comenzar la lección 1.", F_SMALL, FOSF_DIM, ANCHO // 2, ALTO - 90, centro=True)
         pygame.display.flip()
@@ -86,7 +98,7 @@ def _texto_ayuda(texto, y):
 
 def leccion_cesar():
     mensaje_codificado = "URYYB JBEYQ"
-    desplazamiento = "13"
+    desplazamiento = ""
     ayuda = "Ingresa un número entre 1 y 25 y luego presiona VERIFICAR."
     correcto = False
 
@@ -96,13 +108,13 @@ def leccion_cesar():
         tick_particles()
         _dibujar_encabezado("Lección 1: Cifrado César", "El cifrado César desplaza el alfabeto una cantidad fija de posiciones.")
         panel(120, 140, 760, 520, col=(10, 14, 20), borde=FOSF_VERDE, radio=18, alpha=230)
-        panel(920, 140, 300, 520, col=(8, 12, 18), borde=FOSF_VERDE, radio=18, alpha=220)
+        panel(920, 140, 550, 520, col=(8, 12, 18), borde=FOSF_VERDE, radio=18, alpha=220)
 
         txt("Cadena cifrada:", F_SMALL, FOSF_VERDE, 160, 170)
         txt_glow(mensaje_codificado, F_GIANT, BLANCO, 500, 220, centro=True)
 
         txt("Shift actual:", F_SMALL, FOSF_VERDE, 160, 280)
-        input_box(desplazamiento, 280, 276, 90, activo=True)
+        input_box(desplazamiento, 380, 276, 90, activo=True)
         _texto_ayuda(ayuda, 330)
 
         if desplazamiento.isdigit():
@@ -118,11 +130,11 @@ def leccion_cesar():
         txt(resultado, F_BOLD, BLANCO, 500, 420, centro=True)
 
         _dibujar_explica(920, 170, "Cómo funciona", [
-            "1. Cada letra se mueve X posiciones en el alfabeto.",
+            "1. Cada letra se mueve X posiciones en el\n alfabeto.",
             "2. ROT13 usa un desplazamiento fijo de 13.",
             "3. A→N, B→O, C→P, ..., M→Z.",
-            "4. Decodificar ROT13 es aplicar el mismo shift otra vez.",
-            "5. Es un cifrado clásico, útil para ejemplos."
+            "4. Decodificar ROT13 es aplicar el mismo shif\n otra vez.",
+            "5. Es un cifrado clásico, útil para\n ejemplos."
         ], FOSF_VERDE)
 
         txt_glow("Fórmula", F_SMALL, FOSF_VERDE, 940, 400)
@@ -164,7 +176,7 @@ def leccion_cesar():
 
 
 def leccion_base64():
-    texto_base64 = "U29tbyBjaXJjbzogSGFnYSA1MCVzaW5vcw=="
+    texto_base64 = "VG9wIFNlY3JldA=="
     respuesta = ""
     ayuda = "Escribe el texto decodificado y presiona VERIFICAR."
     correcto = False
@@ -176,7 +188,7 @@ def leccion_base64():
         tick_particles()
         _dibujar_encabezado("Lección 2: Base64", "Base64 convierte bytes binarios en texto seguro para transmisión.")
         panel(120, 140, 760, 520, col=(8, 16, 24), borde=CYAN_SCAN, radio=18, alpha=230)
-        panel(920, 140, 300, 520, col=(6, 14, 22), borde=CYAN_SCAN, radio=18, alpha=220)
+        panel(920, 140, 550, 520, col=(6, 14, 22), borde=CYAN_SCAN, radio=18, alpha=220)
 
         txt("Cadena Base64:", F_SMALL, CYAN_SCAN, 160, 170)
         txt_glow(texto_base64, F_BOLD, BLANCO, 500, 220, centro=True)
@@ -197,7 +209,7 @@ def leccion_base64():
         ], CYAN_SCAN)
 
         txt_glow("Ejemplo parcial", F_SMALL, CYAN_SCAN, 940, 400)
-        txt("'Som' → 01010011 01101111 01101101", F_MICRO, FOSF_DIM, 940, 430)
+        txt("'Son' → 01010011 01101111 01101101", F_MICRO, FOSF_DIM, 940, 430)
         txt("Divide en 6 bits y mapea cada grupo.", F_MICRO, FOSF_DIM, 940, 450)
 
         mouse = pygame.mouse.get_pos()
@@ -247,21 +259,21 @@ def leccion_hash():
         tick_particles()
         _dibujar_encabezado("Lección 3: Hash", "Un hash es una huella digital fija para cualquier entrada.")
         panel(120, 140, 760, 520, col=(10, 12, 20), borde=AMBER, radio=18, alpha=230)
-        panel(920, 140, 300, 520, col=(8, 10, 18), borde=AMBER, radio=18, alpha=220)
+        panel(920, 140, 550, 520, col=(8, 10, 18), borde=AMBER, radio=18, alpha=220)
 
         txt("Hash objetivo:", F_SMALL, AMBER, 160, 170)
         txt_glow(texto_hash[:48] + "...", F_TINY, BLANCO, 500, 210, centro=True)
 
         txt("Escribe tu texto:", F_SMALL, AMBER, 160, 280)
-        input_box(entrada, 320, 276, 520, activo=True, placeholder="Intenta hallar la palabra secreta")
+        input_box(entrada, 400, 276, 420, activo=True, placeholder="Intenta hallar la palabra secreta")
 
         if entrada:
             hash_actual = hashlib.sha256(entrada.encode('utf-8')).hexdigest()
             txt("Hash generado:", F_SMALL, FOSF_DIM, 160, 330)
-            txt(hash_actual[:48] + "...", F_TINY, FOSF_DIM, 500, 370, centro=True)
+            txt(hash_actual[:48] + "...", F_MICRO, FOSF_DIM, 500, 370, centro=True)
         else:
             txt("Hash generado:", F_SMALL, FOSF_DIM, 160, 330)
-            txt("(escribe algo para verlo)", F_TINY, FOSF_DIM, 500, 370, centro=True)
+            txt("(escribe algo para verlo)", F_MICRO, FOSF_DIM, 500, 370, centro=True)
 
         _texto_ayuda(ayuda, 420)
         _dibujar_explica(920, 170, "Propiedades de hash", [
@@ -299,7 +311,7 @@ def leccion_hash():
                         ayuda = "No es correcto. Observa el hash y prueba otra palabra."
                         play("error")
                 if btn_hint.collidepoint(ev.pos):
-                    ayuda = "La palabra secreta es AGENTE. El hash mostrado corresponde a esa entrada."
+                    ayuda = "La palabra secreta es AGENTE. El hash mostrado corresponde\n a esa entrada."
                     play("click")
 
     play("ok")
@@ -326,7 +338,7 @@ def leccion_diffie():
         tick_particles()
         _dibujar_encabezado("Lección 4: Diffie-Hellman", "Diffie-Hellman permite acordar una clave sin transmitirla directamente.")
         panel(120, 140, 760, 520, col=(12, 10, 18), borde=ROJO_ALERTA, radio=18, alpha=230)
-        panel(920, 140, 300, 520, col=(10, 8, 18), borde=ROJO_ALERTA, radio=18, alpha=220)
+        panel(920, 140, 550, 520, col=(10, 8, 18), borde=ROJO_ALERTA, radio=18, alpha=220)
 
         txt("Parámetros públicos:", F_SMALL, ROJO_ALERTA, 160, 170)
         txt_glow(f"P = {p}    G = {g}", F_BOLD, BLANCO, 500, 210, centro=True)

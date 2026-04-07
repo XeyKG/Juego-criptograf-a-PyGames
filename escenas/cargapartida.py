@@ -9,7 +9,7 @@ import sys
 from config import (
     ANCHO, ALTO, reloj, pantalla,
     FOSF_VERDE, FOSF_DIM, AMBER, BLANCO, GRIS_PANEL,
-    F_BOLD, F_SMALL, F_TINY,
+    F_BOLD, F_SMALL, F_TINY, F_MICRO,
 )
 from ui import fondo_terminal, txt, txt_glow, panel, boton
 from efectos import tick_particles, lluvia_data
@@ -101,7 +101,7 @@ def pantalla_carga_partida():
             txt(f"Misión {misiones_hechas + 1} — {pts:06d} pts",
                 F_BOLD, AMBER if hov else FOSF_VERDE,
                 px + 35, y + 8)
-            txt(f"Guardado: {fecha}", F_TINY, FOSF_DIM,
+            txt(f"Guardado: {fecha}", F_MICRO, FOSF_DIM,
                 px + 35, y + 28)
             
             if hov and pygame.mouse.get_pressed()[0]:

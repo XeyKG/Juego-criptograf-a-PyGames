@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+Pantalla de victoria y acceso negado — v3.1 LEGIBILIDAD MEJORADA
+"""
+
 import math
 import random
 import time

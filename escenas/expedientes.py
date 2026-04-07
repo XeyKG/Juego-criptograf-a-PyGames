@@ -5,7 +5,7 @@ Pantalla de expedientes / récords.
 
 import pygame
 
-from config import ANCHO, ALTO, reloj, pantalla, FOSF_VERDE, AMBER, CYAN_SCAN, FOSF_DIM, F_GRANDE, F_SMALL, F_MEDIA
+from config import ANCHO, ALTO, reloj, pantalla, FOSF_VERDE, AMBER, CYAN_SCAN, FOSF_DIM, F_GRANDE, F_SMALL, F_MEDIA, F_MICRO
 from ui import fondo_terminal, txt, txt_glow, panel, boton
 from efectos import tick_particles, lluvia_data
 

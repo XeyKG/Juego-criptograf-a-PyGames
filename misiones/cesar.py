@@ -178,7 +178,7 @@ def mision_cesar():
                 msg_disp += random.choice("ABCDEFGHIJKLMNOPQRSTUVWXYZ")
             else:
                 msg_disp += c
-        txt(msg_disp, F_TINY, AMBER, 35 + ox, 95 + oy)
+        txt(msg_disp, F_SMALL, AMBER, 35 + ox, 96 + oy)
 
         # ── Barra de tiempo ──
         panel(20 + ox, 160 + oy, ANCHO - 310, 38,
@@ -247,7 +247,7 @@ def mision_cesar():
               col=GRIS_PANEL, borde=FOSF_DIM, radio=4)
 
         # Sección 1: Acertijo
-        txt("◈ ACERTIJO DESCIFRADO:", F_TINY, AMBER, 35 + ox, pc_y + 5)
+        txt("◈ ACERTIJO DESCIFRADO:", F_SMALL, AMBER, 35 + ox, pc_y + 8)
         if acertijo_descifrado:
             acert_lines = []
             lin_ac = ""
@@ -344,9 +344,9 @@ def mision_cesar():
             txt(msg_ret, F_BOLD, col_msg, ANCHO // 2, pc_y + 358, centro=True)
 
         if resuelto:
-            btn_sig = boton("SIGUIENTE MISIÓN ▶▶",
-                            ANCHO // 2 - 110 + ox, ALTO - 55 + oy, 220, 38,
-                            (0, 60, 20), (0, 120, 40), mouse)
+            btn_sig = boton("SIGUIENTE MISIÓN",
+                    ANCHO // 2 - 140 + ox, ALTO - 80 + oy, 280, 52,
+                    (0, 60, 20), (0, 120, 40), mouse)
 
         # ── Overlays ──
         aria.actualizar(); aria.dibujar()

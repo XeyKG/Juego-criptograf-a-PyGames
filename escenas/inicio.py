@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Pantalla de menú principal — v3.1 LEGIBILIDAD MEJORADA
+Cambios: botones más grandes, texto de misiones más legible,
+         contraste mejorado, espaciado generoso.
+"""
+
 import random
 import math
 import pygame
@@ -46,7 +53,7 @@ def pantalla_inicio(rec):
                 matrix[i] = (fx, fy, random.choice(chars), spd, fase)
 
         # ── Panel central — ligeramente más ancho ──
-        pw, ph = 760, 540
+        pw, ph = 860, 640
         px = ANCHO // 2 - pw // 2
         py = ALTO // 2 - ph // 2 - 10
         panel(px, py, pw, ph, col=GRIS_PANEL, borde=FOSF_DIM,
@@ -91,16 +98,16 @@ def pantalla_inicio(rec):
         # ── Lista de misiones — filas más altas ──
         misiones = [
             ("01", "CIFRADO CÉSAR", "Rueda interactiva — descifra el desplazamiento",
-             FOSF_VERDE, "★☆☆"),
+             FOSF_VERDE, "1/3"),
             ("02", "BASE64", "Decodifica transmisión con analizador visual",
-             CYAN_SCAN, "★★☆"),
+             CYAN_SCAN, "2/3"),
             ("03", "HUELLA SHA-256", "Calculadora en tiempo real — identifica al infiltrado",
-             AMBER, "★★★"),
+             AMBER, "3/3"),
             ("04", "DIFFIE-HELLMAN", "Visualiza el intercambio de claves y calcula",
-             MORADO, "★★★"),
+             MORADO, "3/3"),
         ]
         y_m = py + 198
-        FILA_H = 54  # era 50 — más espacio
+        FILA_H = 70  # era 50 — más espacio
         for num, nom, desc, col, dif in misiones:
             hov = (px + 20 <= mouse[0] <= px + pw - 20
                    and y_m <= mouse[1] <= y_m + FILA_H - 4)
@@ -126,23 +133,20 @@ def pantalla_inicio(rec):
             )
 
         # Botones — más altos (48px) y mejor distribuidos
-        by = py + ph - 62
-        BH = 46  # altura botón era 42
-        btn_op = boton("▶ NUEVA OPERACIÓN",
-                       px + 30, by, 210, BH,
+        by = py + ph - 102
+        BH = 56  # altura botón era 42
+        btn_op = boton("COMENZAR",
+                       px + 60, by, 210, BH,
                        (0, 65, 22), (0, 130, 45), mouse)
-        btn_carg = boton("⟲ CARGAR",
-                        px + 255, by, 150, BH,
+        btn_carg = boton("CARGAR",
+                        px + 285, by, 150, BH,
                         (20, 45, 20), (45, 90, 45), mouse)
-        btn_rec = boton("◈ EXPEDIENTES",
-                       px + 420, by, 175, BH,
+        btn_rec = boton("HISTORIAL",
+                       px + 450, by, 175, BH,
                        (45, 45, 0), (90, 90, 0), mouse)
-        btn_sal = boton("✖ ABORTAR",
-                       px + 610, by, 130, BH,
+        btn_sal = boton("ABORTAR",
+                       px + 640, by, 130, BH,
                        (45, 0, 0), (110, 0, 0), mouse)
-
-        txt("v3.1  //  INTERFAZ MEJORADA  //  MECÁNICAS INTERACTIVAS",
-            F_TINY, FOSF_DARK, px + 20, py + ph - 14)
 
         pygame.display.flip()
         reloj.tick(60)

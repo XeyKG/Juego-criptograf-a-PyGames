@@ -1,3 +1,8 @@
+# -*- coding: utf-8 -*-
+"""
+Configuración global del proyecto — v3.1 LEGIBILIDAD MEJORADA
+"""
+
 import time
 import subprocess
 import sys
@@ -17,8 +22,9 @@ except Exception:
 MODO_PRACTICA = False
 
 # ─── PANTALLA ─────────────────────────────────────────────────────────────────
-ANCHO, ALTO = 1280, 720
-pantalla = pygame.display.set_mode((ANCHO, ALTO))
+ANCHO, ALTO = 1500, 720
+pantalla = pygame.display.set_mode((ANCHO, ALTO), pygame.RESIZABLE)
+pygame.VIDEORESIZE = pygame.USEREVENT + 1
 pygame.display.set_caption("OPERACIÓN SOMBRA v3.1 — Agencia de Inteligencia Cifrada")
 reloj = pygame.time.Clock()
 
@@ -51,14 +57,14 @@ def _fuente(tam, bold=False):
     return pygame.font.Font(None, tam)
 
 # ANTES → AHORA  (incremento ~20-30%)
-F_GIANT  = _fuente(56, True)    # era 52
-F_TITULO = _fuente(38, True)    # era 34
+F_GIANT  = _fuente(40, True)    # era 52
+F_TITULO = _fuente(30, True)    # era 34
 F_GRANDE = _fuente(28, True)    # era 24
-F_MEDIA  = _fuente(22)          # era 18 — diferencia clave
-F_SMALL  = _fuente(18)          # era 14 — el más crítico
-F_MICRO  = _fuente(15)          # era 12
-F_BOLD   = _fuente(22, True)    # era 18
-F_TINY   = _fuente(14)          # era 11 — era casi ilegible
+F_MEDIA  = _fuente(30)          # era 18 — diferencia clave
+F_SMALL  = _fuente(21)          # era 14 — el más crítico
+F_MICRO  = _fuente(18)          # era 12
+F_BOLD   = _fuente(25, True)    # era 18
+F_TINY   = _fuente(17)          # era 11 — era casi ilegible
 
 # ─── TIMER GLOBAL ─────────────────────────────────────────────────────────────
 _t0 = time.time()

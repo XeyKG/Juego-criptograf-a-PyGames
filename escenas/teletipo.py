@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Animación de texto tipo teletipo — v3.1 LEGIBILIDAD MEJORADA
+Cambios: márgenes más amplios, fuente más grande, panel de fondo,
+         instrucciones más claras, espaciado entre líneas aumentado.
+"""
+
 import random
 import math
 import time
@@ -124,7 +131,7 @@ def teletipo(lineas, vel=0.035):
         # Botón pulsante de continuar
         pulse = 0.7 + 0.3 * math.sin(time.time() * 3)
         col_btn = tuple(int(c * pulse) for c in AMBER)
-        panel(ANCHO // 2 - 180, ALTO - 52, 360, 38,
+        panel(ANCHO // 2 - 330, ALTO - 52, 660, 38,
               col=(30, 25, 0), borde=AMBER, radio=5, alpha=200)
         txt("[ PRESIONA CUALQUIER TECLA PARA CONTINUAR ]",
             F_SMALL, col_btn, ANCHO // 2, ALTO - 38, centro=True)

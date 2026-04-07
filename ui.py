@@ -1,3 +1,10 @@
+# -*- coding: utf-8 -*-
+"""
+Componentes de interfaz reutilizables — v3.1 MEJORADO
+Cambios: separación de elementos, contraste mejorado, inputs más altos,
+         panel HUD más legible, etiquetas de foco más claras.
+"""
+
 import math
 import time
 
